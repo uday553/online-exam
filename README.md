@@ -12,149 +12,150 @@ Candidate has to login with the password sent for that test. That password shoul
 ## Examinar
 ### Login Api
       Api type : 		Post
-      Service URL:		/examinar/v1/login
+      Service URL:	/examinar/v1/login
       Service Name:	ExaminerLoginService
       Payload:		{
-      username:  name,
-      password:  xxxx
-      }
-          response: 		{
-                  token:  xxxxx
-      }
+                              username:  name,
+                              password:  xxxx
+                        }
+      response: 		{
+                              token:  xxxxx
+                        }
 ### List Tests
       Api type : 		Get
-      Service URL:		/examinar/v1/test/list/<offset>
+      Service URL:	/examinar/v1/test/list/<offset>
       Service Name:	ExaminerTestService
       Headers:		examinerToken
       PayLoad:		{
-      }
-          response: 		{
-                  [
-                    {
-                      Testname: abc
-                      testID:  111
-      }
-      ]
-      }
+                        }
+      response: 		{
+                                    [
+                                      {
+                                        Testname: abc
+                                        testID:  111
+                                      }
+                                    ]
+                        }
 ### Create Test
       Api type : 		Post
-      Service URL:		/examinar/v1/test/new
+      Service URL:	/examinar/v1/test/new
       Headers:		examinerToken
       Service Name:	ExaminerTestService
       PayLoad:		{
-              name:      Test Name,
-            visibleDate:  dd-mm-yyyy,
-            expiryDate:  dd-mm-yyyy,
-            timeLimit: <no of minutes>
-            }
-          response: 		{
-                  message : “test created”
-      }
+                              name:      Test Name,
+                              visibleDate:  dd-mm-yyyy,
+                              expiryDate:  dd-mm-yyyy,
+                              timeLimit: <no of minutes>
+                         }
+      response: 		{
+                                    message : “test created”
+                        }
 ### Delete Test
       Api type : 		Get
-      Service URL:		/examinar/v1/test/remove/<test-id>
+      Service URL:	/examinar/v1/test/remove/<test-id>
       Headers:		examinerToken
       Service Name:	ExaminerTestService
       PayLoad:		{
-            }
-          response: 		{
-                  message : “test deleted”
-      }
+                        }
+      response: 		{
+                                    message : “test deleted”
+                        }
 ### List Test Results
       Api type : 		Get
-      Service URL:		/examinar/v1/test/result/<testId>
+      Service URL:	/examinar/v1/test/result/<testId>
       Service Name:	LoginService
       Headers:		ExaminerTestService
       PayLoad:		{
-      }
-          response: 		{
-                  noQuestions:  <number of question> 
-                  results:  [
-      {	
-      studentid:
-      result:
-      }
-         ]
-      }
+                        }
+      response: 		{
+                                    noQuestions:  <number of question> 
+                                    results:  [
+                                                {	
+                                                studentid:
+                                                result:
+                                                }
+                                          ]
+                        }
 ### Mapping test to candidates
     Api type : 		Post
     Service URL:		/examinar/v1/test/candidate/map/<testid>
-    Service Name:	ExaminerTestService
+    Service Name:	      ExaminerTestService
     Payload:		{
-    candidateList: [ candidate1, candidate2, candidate3]
-    }
-        response: 		{
-                message : “test mapped successfully”
-    }
+                            candidateList: [ candidate1, candidate2, candidate3]
+                        }
+    response: 		{
+                              message : “test mapped successfully”
+                        }
 ### Add questions to test
     Api type : 		Post
     Service URL:		/examinar/v1/test/questions/new/<test-id>
-    Service Name:	QuestionsService
+    Service Name:	      QuestionsService
     Headers:		examinerToken
     PayLoad:		{
-          question: ”------------- “,
-          options:  [ option1, option2, option3, option4]
-          answer: [option1]
-    }
-        response: 		{
-                message : “question/s added successfully”
-    }
+                            question: ”------------- “,
+                            options:  [ option1, option2, option3, option4]
+                            answer: [option1]
+                        }
+    response: 		{
+                                        message : “question/s added successfully”
+                        }
     Remove questions from test
 ### Api type : 		Post
     Service URL:		/examinar/v1/test/questions/remove/<test-id>
-    Service Name:	QuestionsService
+    Service Name:	      QuestionsService
     Headers:		examinerToken
     PayLoad:		{
-            questions: [questionId1, questionId2]
-    }
-        response: 		{
-                message : “question/s removed deleted”
-    }
+                                    questions: [questionId1, questionId2]
+                        }
+    response: 		{
+                                        message : “question/s removed deleted”
+                        }
 ## Candidate
 ### Test login
       Api type : 		Post
-      Service URL:		/candidate/v1/login/<testid>
+      Service URL:	/candidate/v1/login/<testid>
       Service Name:	CandidateLoginService
       Payload:		{
-      username:  name,
-      password:  xxxx
-      }
-          response: 		{
-                  token:  xxxxx
-      }
+                              username:  name,
+                              password:  xxxx
+                        }
+      response: 		{
+                              token:  xxxxx
+                        }
 ### Test Start
     Api type : 		Get
     Service URL:		/candidate/v1/test/start
-    Service Name:	CandidateTestService
+    Service Name:	      CandidateTestService
     Headers:		candidateTestToken
     Payload:		{}
-        response: 		{
-              message:”Test Sarted”
-    }
+    response: 		{
+                                    message:”Test Sarted”
+                        }
 ### Test Submit
     Api type : 		Post
     Service URL:		/candidate/v1/test/question/submit
-    Service Name:	CandidateQuestionService
+    Service Name:	      CandidateQuestionService
     Headers:		candidateTestToken
     Payload:		{
-    username:  name,
-    password:  xxxx
-    }
-        response: 		{
-                message: “test submitted”
-    }
+                            username:  name,
+                            password:  xxxx
+                            }
+    response:     	{
+                                        message: “test submitted”
+                        }
 ### Answer Submit
     Api type : 		Post
     Service URL:		/candidate/v1/test/answer/submit
-    Service Name:	CandidateQuestionService
+    Service Name:	      CandidateQuestionService
     Headers:		candidateTestToken
     Payload:		{
-    questionid: <questionid>,
-    answer: [option1,option2]
-    }
-        response: 		{
-                message: “answer updated”
-    }
+                            questionid: <questionid>,
+                            answer: [option1,option2]
+                            }
+                        response: 		{
+                                        message: “answer updated”
+                            }
+                        }
 
 
 
