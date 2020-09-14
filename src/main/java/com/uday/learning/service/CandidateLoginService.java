@@ -41,7 +41,7 @@ public class CandidateLoginService  implements  LoginService<CandidateLoginReque
                     candidateAuth.setStatus(CandidateStatus.INACTIVE.ordinal());
                     candidateAuth.setExpiredAt(Calendar.getInstance().getTime());
                     candidateAuthRepository.save(candidateAuth);
-                    candidateTokenCacheRepository.save(new CandidateTokenCacheDao(candidateLoginRequest.getTestId(),token,candidateLoginRequest.getLastAttemptedQuestion()));
+                    candidateTokenCacheRepository.save(new CandidateTokenCacheDao(candidateLoginRequest.getTestId(),token,candidateLoginRequest.getLastAttemptedQuestion(),candidateLoginRequest.getUserId()));
                     return new CandidateLoginLoginResponse(token);
                 }
             }

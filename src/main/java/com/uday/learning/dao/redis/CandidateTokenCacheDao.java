@@ -15,6 +15,7 @@ public class CandidateTokenCacheDao extends Base {
     private String token;
     private int testId;
     private int lastAttemptedQuestion;
+    private String userId;
     public CandidateTokenCacheDao(String token)
     {
         this.token=token;
@@ -25,11 +26,12 @@ public class CandidateTokenCacheDao extends Base {
         this.testId=testId;
         setCreatedAt(Calendar.getInstance().getTime());
     }
-    public CandidateTokenCacheDao(int testId, String token,int lastAttemptedQuestion)
+    public CandidateTokenCacheDao(int testId, String token,int lastAttemptedQuestion,String userId)
     {
         this.testId=testId;
         this.token=token;
         this.lastAttemptedQuestion = lastAttemptedQuestion;
+        this.userId=userId;
         setCreatedAt(Calendar.getInstance().getTime());
     }
 }

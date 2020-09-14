@@ -14,6 +14,7 @@ import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
 import com.uday.learning.dao.repository.ExaminarRepository;
 import com.uday.learning.dao.repository.redis.ExaminarTokenCacheRepository;
 import com.uday.learning.exception.NotAllowedToLoginException;
+import com.uday.learning.exception.NotAuthorizedException;
 import com.uday.learning.utils.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,9 +44,12 @@ public class ExaminarLoginService implements  LoginService{
             String token = securityUtils.getToken(request);
             if(examinarTokenCacheRepository.findById(token)==null ) {
                 Examinar examinar = examinarRepository.findByEmailIdAndPasswordAndStatus(request.getUserId(), request.getPassword(), ExaminarStatus.ACTIVE.ordinal());
-                if(examinar!=null)
-                    examinarTokenCacheRepository.save(new ExaminerTokenCacheDao(token,examinar.getId()));
-                return new ExaminerLoginResponse(token);
+                log.info("Examinar >>>>>> {} ",examinar);
+                if(examinar!=null) {
+                    examinarTokenCacheRepository.save(new ExaminerTokenCacheDao(token, examinar.getId()));
+                    return new ExaminerLoginResponse(token);
+                }
+                throw  new NotAuthorizedException("Authentication Falied");
             }
         }
         throw  new NotAllowedToLoginException("Authentication Falied");
