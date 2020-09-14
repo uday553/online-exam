@@ -3,26 +3,39 @@ package com.uday.learning.controller;
 import com.uday.learning.bean.request.BaseLoginRequest;
 import com.uday.learning.bean.request.ExaminerLoginRequest;
 import com.uday.learning.bean.response.BaseLoginResponse;
+import com.uday.learning.dao.redis.CandidateTokenCacheDao;
+import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
+import com.uday.learning.service.ExaminarLoginService;
 import com.uday.learning.service.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/login/examinar")
+@RequestMapping("/examinar")
 public class ExaminerLoginController {
 
     Logger log = LoggerFactory.getLogger(ExaminerLoginController.class);
 
     @Autowired
-    LoginService<BaseLoginRequest, BaseLoginResponse> examinarLoginService;
+    ExaminarLoginService examinarLoginService;
 
     @RequestMapping("/v1/login")
     public BaseLoginResponse login(@RequestBody ExaminerLoginRequest request)
     {
         return examinarLoginService.login(request);
+    }
+
+    @GetMapping("/v1/signout")
+    public Boolean delete(@RequestHeader("token") final String token) {
+        examinarLoginService.delete(token);
+        return true;
+    }
+
+    @GetMapping("/v1/find")
+    public ExaminerTokenCacheDao findById(@RequestHeader("token") final String token) {
+        log.info("token >>> {}",token);
+        return examinarLoginService.findById(token);
     }
 }

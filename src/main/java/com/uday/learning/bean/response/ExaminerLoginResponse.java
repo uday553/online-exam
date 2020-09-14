@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ToString
 @AllArgsConstructor
 @ResponseStatus(HttpStatus.ACCEPTED)
-public class ExaminerLoginLoginResponse extends BaseLoginResponse {
+public class ExaminerLoginResponse extends BaseLoginResponse {
     private String token;
 }

@@ -1,5 +1,6 @@
 package com.uday.learning.dao.repository.redis;
 
+import com.uday.learning.constant.ExaminarConstants;
 import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
 
 import org.springframework.data.redis.core.RedisTemplate;
@@ -24,7 +25,7 @@ public class ExaminarTokenCacheRepository implements BaseRepository<String, Exam
     public void save(ExaminerTokenCacheDao examinerTokenCacheDao) {
         String key = examinerTokenCacheDao.getToken();
         examinarTokenTemplate.opsForValue().set(key, examinerTokenCacheDao);
-        examinarTokenTemplate.expire( key, 10, TimeUnit.SECONDS );
+        examinarTokenTemplate.expire( key, ExaminarConstants.SESSION_EXPIRE_TIME_IN_SECONDS, TimeUnit.SECONDS );
     }
 
     @Override
@@ -35,12 +36,12 @@ public class ExaminarTokenCacheRepository implements BaseRepository<String, Exam
     @Override
     public void update(String  key, ExaminerTokenCacheDao examinerTokenCacheDao) {
         valueOperations.set( key, examinerTokenCacheDao);
-        examinarTokenTemplate.expire( key, 10, TimeUnit.SECONDS );
+        examinarTokenTemplate.expire( key, ExaminarConstants.SESSION_EXPIRE_TIME_IN_SECONDS, TimeUnit.SECONDS );
     }
 
     @Override
     public void updateExpire(String  key) {
-        examinarTokenTemplate.expire( key, 10, TimeUnit.SECONDS );
+        examinarTokenTemplate.expire( key, ExaminarConstants.SESSION_EXPIRE_TIME_IN_SECONDS, TimeUnit.SECONDS );
     }
 
     @Override
@@ -52,4 +53,5 @@ public class ExaminarTokenCacheRepository implements BaseRepository<String, Exam
     public boolean hasKey(String id) {
         return examinarTokenTemplate.hasKey(id);
     }
+
 }

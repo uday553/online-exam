@@ -37,7 +37,7 @@ public class RedisConfig {
 
     @Bean
     RedisTemplate<String , ExamCacheDao> redisTemplate(JedisConnectionFactory jedisConnectionFactory){
-        log.info(">>>>>>>>>>>>>>>>>>>>>     Redis template created");
+
         RedisTemplate<String, ExamCacheDao> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory);
 
@@ -55,7 +55,7 @@ public class RedisConfig {
 
     @Bean
     RedisTemplate<String , ExaminerTokenCacheDao> examinarTokenTemplate(JedisConnectionFactory jedisConnectionFactory){
-        log.info(">>>>>>>>>>>>>>>>>>>>>     ExaminerTokenCacheDao template created");
+
         RedisTemplate<String, ExaminerTokenCacheDao> examinarTokenTemplate = new RedisTemplate<>();
         examinarTokenTemplate.setConnectionFactory(jedisConnectionFactory);
 
@@ -73,7 +73,7 @@ public class RedisConfig {
 
     @Bean
     RedisTemplate<String , CandidateTokenCacheDao> candidateTokenTemplate(JedisConnectionFactory jedisConnectionFactory){
-        log.info(">>>>>>>>>>>>>>>>>>>>>     CandidateTokenCacheDao template created");
+
         RedisTemplate<String, CandidateTokenCacheDao> candidateTokenTemplate = new RedisTemplate<>();
         candidateTokenTemplate.setConnectionFactory(jedisConnectionFactory);
 

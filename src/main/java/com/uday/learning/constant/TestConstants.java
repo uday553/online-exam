@@ -1,4 +1,5 @@
 package com.uday.learning.constant;
 
-public class constant {
+public class TestConstants {
+
 }
