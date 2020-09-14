@@ -1,7 +1,7 @@
 package com.uday.learning.dao.repository.redis;
 
 import com.uday.learning.constant.ExaminarConstants;
-import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
+import com.uday.learning.redis.dao.ExaminerTokenCacheDao;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;

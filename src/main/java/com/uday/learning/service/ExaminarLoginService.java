@@ -2,15 +2,10 @@ package com.uday.learning.service;
 
 import com.uday.learning.bean.request.ExaminerLoginRequest;
 import com.uday.learning.bean.response.BaseLoginResponse;
-import com.uday.learning.bean.response.CandidateLoginLoginResponse;
-import com.uday.learning.bean.response.ExaminerLoginFailedLoginResponse;
 import com.uday.learning.bean.response.ExaminerLoginResponse;
-import com.uday.learning.dao.CandidateAuth;
-import com.uday.learning.dao.CandidateStatus;
 import com.uday.learning.dao.Examinar;
 import com.uday.learning.dao.ExaminarStatus;
-import com.uday.learning.dao.redis.CandidateTokenCacheDao;
-import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
+import com.uday.learning.redis.dao.ExaminerTokenCacheDao;
 import com.uday.learning.dao.repository.ExaminarRepository;
 import com.uday.learning.dao.repository.redis.ExaminarTokenCacheRepository;
 import com.uday.learning.exception.NotAllowedToLoginException;

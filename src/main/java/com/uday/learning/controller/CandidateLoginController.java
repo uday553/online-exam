@@ -2,7 +2,7 @@ package com.uday.learning.controller;
 
 import com.uday.learning.bean.request.CandidateLoginRequest;
 import com.uday.learning.bean.response.BaseLoginResponse;
-import com.uday.learning.dao.redis.CandidateTokenCacheDao;
+import com.uday.learning.redis.dao.CandidateTokenCacheDao;
 import com.uday.learning.service.CandidateLoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

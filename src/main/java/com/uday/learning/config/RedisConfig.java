@@ -1,9 +1,9 @@
 package com.uday.learning.config;
 
 
-import com.uday.learning.dao.redis.CandidateTokenCacheDao;
-import com.uday.learning.dao.redis.ExamCacheDao;
-import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
+import com.uday.learning.redis.dao.CandidateTokenCacheDao;
+import com.uday.learning.redis.dao.ExamCacheDao;
+import com.uday.learning.redis.dao.ExaminerTokenCacheDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,6 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableRedisRepositories(basePackageClasses = {ExamCacheDao.class})

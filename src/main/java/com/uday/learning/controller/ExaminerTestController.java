@@ -5,19 +5,13 @@ import com.uday.learning.bean.request.TestAssignRequest;
 import com.uday.learning.bean.response.AppendQuestionsResponse;
 import com.uday.learning.bean.response.TestAssignResponse;
 import com.uday.learning.bean.response.TestListResponse;
-import com.uday.learning.dao.redis.ExamCacheDao;
+import com.uday.learning.redis.dao.ExamCacheDao;
 import com.uday.learning.dao.repository.redis.BaseRepository;
-import com.uday.learning.dao.repository.redis.ExamCacheRepository;
-import com.uday.learning.dao.repository.redis.ExaminarTokenCacheRepository;
-import com.uday.learning.service.ExaminarLoginService;
 import com.uday.learning.service.ExaminarTestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Calendar;
-import java.util.List;
 
 @RestController
 @RequestMapping("/examinar/test")

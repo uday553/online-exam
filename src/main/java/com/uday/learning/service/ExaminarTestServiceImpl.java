@@ -3,12 +3,11 @@ package com.uday.learning.service;
 import com.uday.learning.bean.request.TestAssignRequest;
 import com.uday.learning.bean.response.TestAssignResponse;
 import com.uday.learning.bean.response.TestListResponse;
-import com.uday.learning.controller.ExaminerTestController;
 import com.uday.learning.dao.CandidateAuth;
 import com.uday.learning.dao.CandidateStatus;
 import com.uday.learning.dao.Test;
 import com.uday.learning.dao.TestStatus;
-import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
+import com.uday.learning.redis.dao.ExaminerTokenCacheDao;
 import com.uday.learning.dao.repository.CandidateAuthRepository;
 import com.uday.learning.dao.repository.TestRepository;
 import com.uday.learning.dao.repository.redis.ExaminarTokenCacheRepository;
@@ -77,6 +76,7 @@ public class ExaminarTestServiceImpl implements ExaminarTestService {
                     candidateAuth.setCreatedAt(Calendar.getInstance().getTime());
                     candidateAuth.setPassword(securityUtils.getHAsh(userId));
                     candidateAuth.setStatus(CandidateStatus.INACTIVE.ordinal());
+                    candidateAuth.setAssignStatus(CandidateStatus.INACTIVE.ordinal());
                     candidateAuth.setEmailId(userId);
                     candidateList.add(candidateAuth);
                 }

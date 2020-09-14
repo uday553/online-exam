@@ -1,4 +1,4 @@
-package com.uday.learning.dao.redis;
+package com.uday.learning.redis.dao;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

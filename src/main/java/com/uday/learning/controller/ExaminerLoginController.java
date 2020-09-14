@@ -1,12 +1,9 @@
 package com.uday.learning.controller;
 
-import com.uday.learning.bean.request.BaseLoginRequest;
 import com.uday.learning.bean.request.ExaminerLoginRequest;
 import com.uday.learning.bean.response.BaseLoginResponse;
-import com.uday.learning.dao.redis.CandidateTokenCacheDao;
-import com.uday.learning.dao.redis.ExaminerTokenCacheDao;
+import com.uday.learning.redis.dao.ExaminerTokenCacheDao;
 import com.uday.learning.service.ExaminarLoginService;
-import com.uday.learning.service.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

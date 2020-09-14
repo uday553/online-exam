@@ -1,6 +1,6 @@
 package com.uday.learning.dao.repository.redis;
 
-import com.uday.learning.dao.redis.ExamCacheDao;
+import com.uday.learning.redis.dao.ExamCacheDao;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;

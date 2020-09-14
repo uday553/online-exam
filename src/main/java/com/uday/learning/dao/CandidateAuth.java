@@ -19,6 +19,7 @@ public class CandidateAuth {
     private String emailId;
     private String password;
     private int status;
+    private int assignStatus;
     private Date createdAt;
     private Date expiredAt;
 }

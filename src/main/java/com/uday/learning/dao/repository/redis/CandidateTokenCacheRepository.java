@@ -1,8 +1,6 @@
 package com.uday.learning.dao.repository.redis;
 
-import com.uday.learning.dao.redis.CandidateTokenCacheDao;
-import com.uday.learning.dao.redis.ExamCacheDao;
-import com.uday.learning.service.CandidateLoginService;
+import com.uday.learning.redis.dao.CandidateTokenCacheDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;

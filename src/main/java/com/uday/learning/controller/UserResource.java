@@ -1,10 +1,6 @@
 package com.uday.learning.controller;
 
-import com.uday.learning.dao.redis.CandidateTokenCacheDao;
-import com.uday.learning.dao.redis.ExamCacheDao;
-import com.uday.learning.dao.repository.redis.BaseRepository;
 import com.uday.learning.dao.repository.redis.CandidateTokenCacheRepository;
-import com.uday.learning.dao.repository.redis.ExamCacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
