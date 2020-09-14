@@ -8,6 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class ExaminerTokenCacheDao extends Base {
     private String token;
     private int examinarId;

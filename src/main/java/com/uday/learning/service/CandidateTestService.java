@@ -1,6 +1,7 @@
 package com.uday.learning.service;
 
-public interface CandidateTestService<T> {
+import java.util.List;
 
+public interface CandidateTestService<T> {
 
 }

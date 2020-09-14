@@ -1,7 +1,9 @@
 package com.uday.learning.controller;
 
 import com.uday.learning.bean.request.AppendQuestionsRequest;
+import com.uday.learning.bean.request.TestAssignRequest;
 import com.uday.learning.bean.response.AppendQuestionsResponse;
+import com.uday.learning.bean.response.TestAssignResponse;
 import com.uday.learning.bean.response.TestListResponse;
 import com.uday.learning.dao.redis.ExamCacheDao;
 import com.uday.learning.dao.repository.redis.BaseRepository;
@@ -13,6 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Calendar;
+import java.util.List;
 
 @RestController
 @RequestMapping("/examinar/test")
@@ -31,10 +36,6 @@ public class ExaminerTestController {
         return  examinarTestService.getTestList(token);
     }
 
-    @GetMapping("/delete/{testId}")
-    public ExamCacheDao update(@PathVariable("testId") final int testId, @RequestHeader("token") String token ) {
-        return null;
-    }
 
     @GetMapping("{testId}/append/questions/")
     public AppendQuestionsResponse addQuestionsToTest(@PathVariable("testId") final String testId, @RequestBody AppendQuestionsRequest appendQuestionsRequest) {
@@ -43,13 +44,15 @@ public class ExaminerTestController {
     }
 
     @GetMapping("/fetch/{id}")
-    public ExamCacheDao find(@PathVariable("id") final String id) {
-        return null;
+    public TestListResponse find(@PathVariable("id") final int  id,@RequestHeader("token") String token ) {
+        return examinarTestService.getTest(token,id);
     }
 
-    @PostMapping("/fetch/{id}")
-    public ExamCacheDao assignTest(@RequestHeader("token") final String token) {
-        return null;
+    @PostMapping("/assign")
+    public TestAssignResponse assignTest(@RequestHeader("token") final String token ,
+                                            @RequestBody TestAssignRequest testAssignRequest
+    ) {
+        return examinarTestService.assignTest(token,testAssignRequest );
     }
 
 }

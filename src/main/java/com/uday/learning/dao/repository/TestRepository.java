@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface TestRepository extends JpaRepository<Test,Long> {
         List<Test> findByCreatedByAndStatus(int createdBy, int status);
-        Test findByIdAndCreatedByAndStatus(int id, int createdBy, int status);
+        List<Test> findByIdAndCreatedByAndStatus(int id, int createdBy, int status);
 }
