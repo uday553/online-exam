@@ -1,4 +1,4 @@
-# Assignment
+# Online Exam Service
 Components : Examinar , Candidate , Test
 ### Examinar
 Examinar can create tests and share them with the candidates. Examinar can see the results of candidates for that test. 
