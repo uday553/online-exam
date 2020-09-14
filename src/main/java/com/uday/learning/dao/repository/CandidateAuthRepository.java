@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface CandidateAuthRepository extends JpaRepository<CandidateAuth,Long> {
 
     CandidateAuth findByEmailIdAndTestIdAndPassword(String emailId, int testId, String password);
-    CandidateAuth findByEmailIdAndTestIdAndPasswordAndStatus(String emailId, int testId, String password, CandidateStatus status);
+    CandidateAuth findByEmailIdAndTestIdAndPasswordAndStatus(String emailId, int testId, String password, int status);
     CandidateAuth findById(int id);
 }

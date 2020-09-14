@@ -9,8 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
 import java.util.Calendar;
 
 @Service
@@ -23,6 +29,7 @@ public class SecurityUtils {
 
     public String getAESEncryptedData(String data)
     {
+        log.info(">>>>>>>>>//////  {}",securityConfig);
         return Encryptors.text(securityConfig.getAesKey(), securityConfig.getAesSalt()).encrypt(data);
     }
 
@@ -31,22 +38,25 @@ public class SecurityUtils {
         return Encryptors.text(securityConfig.getAesKey(), securityConfig.getAesSalt()).decrypt(data);
     }
 
-    public String getHash(String data)
+    public String getHAsh(String data)
     {
-        //return new BCryptPasswordEncoder(securityConfig.getRounds()).encode(data);
-        return data;
+        StandardPasswordEncoder encoder = new StandardPasswordEncoder(securityConfig.getAesSalt());
+        return encoder.encode(data);
     }
     public String getToken(BaseLoginRequest baseLoginRequest)
     {
         if(baseLoginRequest!=null) {
             if (baseLoginRequest.getClass() == ExaminerLoginRequest.class) {
                 ExaminerLoginRequest request = (ExaminerLoginRequest) baseLoginRequest;
-                return getHash(request.getUserId() + Calendar.getInstance().getTimeInMillis());
+                return getHAsh(request.getUserId() );
             } else if (baseLoginRequest.getClass() == CandidateLoginRequest.class) {
                 CandidateLoginRequest request = (CandidateLoginRequest) baseLoginRequest;
-                return getHash(request.getTestId() +request.getUserId() +Calendar.getInstance().getTimeInMillis());
+                return getHAsh(request.getTestId() +request.getUserId() );
             }
         }
         return null;
     }
+
+
+
 }

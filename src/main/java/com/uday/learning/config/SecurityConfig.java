@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 @Configuration
-@ConfigurationProperties("aes")
+@ConfigurationProperties("security")
 public class SecurityConfig {
     private String aesKey;
     private String aesSalt;

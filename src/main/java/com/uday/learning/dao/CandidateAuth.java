@@ -2,6 +2,7 @@ package com.uday.learning.dao;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@ToString
 public class CandidateAuth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +18,7 @@ public class CandidateAuth {
     private int testId;
     private String emailId;
     private String password;
-    @Enumerated(EnumType.ORDINAL)
-    private CandidateStatus status;
+    private int status;
     private Date createdAt;
     private Date expiredAt;
 }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface ExaminarRepository  extends JpaRepository<Examinar,Long> {
 
     Examinar findByEmailIdAndPassword(String emailId,String password);
-    Examinar findByEmailIdAndPasswordAndStatus(String emailId,String password, ExaminarStatus status);
+    Examinar findByEmailIdAndPasswordAndStatus(String emailId,String password, int status);
     Examinar findById(int id);
 }

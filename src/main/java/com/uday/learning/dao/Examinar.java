@@ -21,8 +21,7 @@ public class Examinar {
 
     private String password;
 
-    @Enumerated(EnumType.ORDINAL)
-    private ExaminarStatus status;
+    private int status;
 
     private Date createdAt;
 

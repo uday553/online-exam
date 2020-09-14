@@ -5,6 +5,7 @@ import com.uday.learning.bean.response.BaseLoginResponse;
 import com.uday.learning.bean.response.ExaminerLoginFailedLoginResponse;
 import com.uday.learning.bean.response.ExaminerLoginLoginResponse;
 import com.uday.learning.dao.Examinar;
+import com.uday.learning.dao.ExaminarStatus;
 import com.uday.learning.dao.repository.ExaminarRepository;
 import com.uday.learning.utils.SecurityUtils;
 import org.slf4j.Logger;
@@ -28,9 +29,8 @@ public class ExaminarLoginService implements  LoginService{
         ExaminerLoginRequest request =(ExaminerLoginRequest)req;
         if(request!=null && request.getUserId()!=null)
         {
-            String password = securityUtils.getHash(request.getPassword());
-            Examinar examinar = examinarRepository.findByEmailIdAndPassword(request.getUserId(),password);//, ExaminarStatus.ACTIVE);
-            //Examinar examinar = examinarRepository.findByEmailIAndPasswordAndStatus(request.getUsername(),password, ExaminarStatus.ACTIVE);
+            String password = securityUtils.getAESEncryptedData(request.getPassword());
+            Examinar examinar = examinarRepository.findByEmailIdAndPasswordAndStatus(request.getUserId(),password, ExaminarStatus.ACTIVE.ordinal());
             if(examinar!=null)
             {
                 String token = securityUtils.getToken(request);
